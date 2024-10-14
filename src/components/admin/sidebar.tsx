@@ -1,12 +1,25 @@
 import { HomeIcon } from "@radix-ui/react-icons";
 import { MdManageAccounts } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { TbCategoryFilled } from "react-icons/tb";
+import { FaBook } from "react-icons/fa";
 
 const menuItems = [
   {
     title: "Home",
     icon: <HomeIcon className="h-5 w-5" />,
     link: "/admin",
+  },
+
+  {
+    title: "Products",
+    icon: <FaBook className="h-5 w-5" />,
+    link: "/admin/products",
+  },
+  {
+    title: "Categories",
+    icon: <TbCategoryFilled className="h-5 w-5" />,
+    link: "/admin/categories",
   },
   {
     title: "Users",

@@ -1,30 +1,28 @@
 import DialogDelete from "@/components/dialog-delete";
-import { columns } from "@/components/manage-users/columns";
+import { columns } from "@/components/manage-categories/columns";
 import DataTable from "@/components/table/data-table";
-import { useDeleteUser } from "@/hooks/query-users/useDeleteUser";
-import { useGetAllUser } from "@/hooks/query-users/useGetAllUsers";
+import { useDeleteCategory } from "@/hooks/query-categories.ts/useDeleteCategory";
+import { useGetAllCategories } from "@/hooks/query-categories.ts/useGetAllCategories";
+
 import useDebounce from "@/hooks/useDebounce";
-import { useUserStore } from "@/store/useUserStore";
+import { useCategoryStore } from "@/store/useCategoryStore";
 import { useState } from "react";
 
-function UsersPage() {
+function CategoriesPage() {
   const [keyword, setKeyword] = useState("");
   const debounced = useDebounce(keyword, 2000);
-
-  const { modalDelete, setModalDelete, _id, name } = useUserStore();
-  const mutation = useDeleteUser();
-
-  const { data, isLoading } = useGetAllUser({
+  const { modalDelete, setModalDelete, _id, name } = useCategoryStore();
+  const mutation = useDeleteCategory();
+  const { data, isLoading } = useGetAllCategories({
     page: 1,
     limit: 100,
     sort: "asc",
     keyword: debounced,
   });
-
   return (
     <>
       <div className="flex flex-col gap-4">
-        <h1 className="text-2xl font-bold">Manager User</h1>
+        <h1 className="text-2xl font-bold">Manager Categories</h1>
         {isLoading ? (
           <p>Loading...</p>
         ) : (
@@ -33,7 +31,7 @@ function UsersPage() {
             columns={columns}
             setKeyword={setKeyword}
             keyword={keyword}
-            link_create="/admin/users/create-user"
+            link_create="/admin/categories/create-category"
           />
         )}
       </div>
@@ -48,4 +46,4 @@ function UsersPage() {
   );
 }
 
-export default UsersPage;
+export default CategoriesPage;

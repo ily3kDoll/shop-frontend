@@ -5,3 +5,11 @@
 5. hook gọi backend, truyền thuộc tính tương ứng
 6. setup column page tương ứng (đặt lại tên table hiển thị)
 7. code page.
+
+- ReactQuery:
+
+  - useQuery: auto get
+  - useMutation: post ptu delete
+
+- chuyển trang
+  - Link
