@@ -235,9 +235,9 @@ function UpdateProductPage() {
                   <FormLabel>Nhập thông tin mô tả</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Tell us a little bit about yourself"
+                      placeholder="Mô tả về sản phẩm..."
                       className="resize-none"
-                      rows={20}
+                      rows={7}
                       {...field}
                     />
                   </FormControl>
@@ -281,7 +281,7 @@ function UpdateProductPage() {
                 multiple
               />
               <ScrollArea className="h-[300px] w-full border overflow-y-auto">
-                <div className="flex flex-wrap items-center justify-between gap-2 p-2">
+                <div className="flex flex-wrap items-center justify-start gap-2 p-2">
                   {product?.images?.map((image) => (
                     <ImageDeleteIcon
                       key={image.image_id}
@@ -293,9 +293,8 @@ function UpdateProductPage() {
                 </div>
               </ScrollArea>
             </div>
+            <Button className="self-end">Lưu</Button>
           </div>
-
-          <Button className="self-end">Save</Button>
         </form>
       </Form>
     </div>
