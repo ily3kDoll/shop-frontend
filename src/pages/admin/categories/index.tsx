@@ -1,8 +1,8 @@
 import DialogDelete from "@/components/dialog-delete";
 import { columns } from "@/components/manage-categories/columns";
 import DataTable from "@/components/table/data-table";
-import { useDeleteCategory } from "@/hooks/query-categories.ts/useDeleteCategory";
-import { useGetAllCategories } from "@/hooks/query-categories.ts/useGetAllCategories";
+import { useDeleteCategory } from "@/hooks/query-categories/useDeleteCategory";
+import { useGetAllCategories } from "@/hooks/query-categories/useGetAllCategories";
 
 import useDebounce from "@/hooks/useDebounce";
 import { useCategoryStore } from "@/store/useCategoryStore";

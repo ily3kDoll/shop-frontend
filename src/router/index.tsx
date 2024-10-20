@@ -1,6 +1,5 @@
 import ProtectedRoute from "@/components/protected-route";
 import NotFoundPage from "@/pages/404";
-import AdminPage from "@/pages/admin";
 import CategoriesPage from "@/pages/admin/categories";
 import CreateCategoryPage from "@/pages/admin/categories/create";
 import UpdateCategoryPage from "@/pages/admin/categories/update";
@@ -12,8 +11,25 @@ import UsersPage from "@/pages/admin/users";
 import CreateUsersPage from "@/pages/admin/users/create";
 import UpdateUserPage from "@/pages/admin/users/update";
 import HomePage from "@/pages/home";
-import LayoutHomePages from "@/components/home/layout";
+import LayoutHomePages from "@/pages/home/layout";
 import { createBrowserRouter } from "react-router-dom";
+import CustomersPage from "@/pages/admin/customers";
+import OrdersPage from "@/pages/admin/orders";
+import AuthorsPage from "@/pages/admin/authors";
+import CreateAuthorPage from "@/pages/admin/authors/create";
+import UpdateAuthorPage from "@/pages/admin/authors/update";
+import LoginHomePage from "@/pages/home/login";
+import RegisterPage from "@/pages/home/register";
+import ProductsHomePage from "@/pages/home/products";
+import ProductDetailPage from "@/pages/home/products/detail";
+import CartPage from "@/pages/home/cart";
+import ForgotPasswordPage from "@/pages/home/forgot-password";
+import ResetPasswordPage from "@/pages/home/reset-password";
+import CheckoutPage from "@/pages/home/checkout";
+import ThanksPage from "@/pages/home/checkout/thanks";
+import ProfilePage from "@/pages/home/profile";
+import LayOutAdminPage from "@/pages/admin";
+import { DashBoardPage } from "@/pages/admin/dashboard";
 
 const router = createBrowserRouter([
   {
@@ -23,17 +39,44 @@ const router = createBrowserRouter([
         path: "/",
         element: <HomePage />,
       },
+      {
+        path: "/products",
+        element: <ProductsHomePage />,
+      },
+      {
+        path: "/products/:id",
+        element: <ProductDetailPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
+      },
+      {
+        path: "/place-order",
+        element: <CheckoutPage />,
+      },
+      {
+        path: "/thanks",
+        element: <ThanksPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
+      },
     ],
   },
 
   {
-    path: "/admin",
     element: (
       <ProtectedRoute>
-        <AdminPage />
+        <LayOutAdminPage />
       </ProtectedRoute>
     ),
     children: [
+      {
+        path: "/admin",
+        element: <DashBoardPage />,
+      },
       {
         path: "/admin/users",
         element: <UsersPage />,
@@ -70,14 +113,48 @@ const router = createBrowserRouter([
         path: "/admin/products/:id",
         element: <UpdateProductPage />,
       },
+      {
+        path: "/admin/customers",
+        element: <CustomersPage />,
+      },
+      {
+        path: "/admin/orders",
+        element: <OrdersPage />,
+      },
+      {
+        path: "/admin/authors",
+        element: <AuthorsPage />,
+      },
+      {
+        path: "/admin/authors/:id",
+        element: <UpdateAuthorPage />,
+      },
+      {
+        path: "/admin/authors/create-author",
+        element: <CreateAuthorPage />,
+      },
     ],
   },
-
   {
     path: "/admin/login",
     element: <LoginPage />,
   },
-
+  {
+    path: "/login",
+    element: <LoginHomePage />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPasswordPage />,
+  },
+  {
+    path: "/reset-password",
+    element: <ResetPasswordPage />,
+  },
   {
     path: "*",
     element: <NotFoundPage />,

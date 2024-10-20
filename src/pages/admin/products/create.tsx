@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useGetAllNameCategories } from "@/hooks/query-categories.ts/useGetAllNameCategories";
-import { useCreateProduct } from "@/hooks/query-products.ts/useCreateProduct";
-import { useFormCreateProduct } from "@/hooks/query-products.ts/useFormCreateProduct";
+import { useGetAllAuthors } from "@/hooks/query-authors/useGetAllAuthors";
+import { useGetAllNameAuthors } from "@/hooks/query-authors/useGetAllNameAuthors";
+import { useGetAllNameCategories } from "@/hooks/query-categories/useGetAllNameCategories";
+import { useCreateProduct } from "@/hooks/query-products/useCreateProduct";
+import { useFormCreateProduct } from "@/hooks/query-products/useFormCreateProduct";
 
 import useToastMessage from "@/hooks/useToastMessage";
 import { cn } from "@/lib/utils";
@@ -37,6 +39,7 @@ function CreateProductPage() {
   const [activeTab, setActiveTab] = useState("info");
   const { form, formSchema } = useFormCreateProduct();
   const { data: categories } = useGetAllNameCategories();
+  const { data: authors } = useGetAllNameAuthors();
   const [image, setImage] = useState<File>();
   const { toastLoading } = useToastMessage();
   const [extraImages, setExtraImages] = useState<File[]>([]);
@@ -88,7 +91,12 @@ function CreateProductPage() {
               ))}
             </TabsList>
             <div className="w-[1000px]">
-              <TabInfo value="info" form={form} categories={categories} />
+              <TabInfo
+                value="info"
+                form={form}
+                categories={categories}
+                authors={authors}
+              />
               <TabDescription value="description" form={form} />
               <TabImages
                 value="image"

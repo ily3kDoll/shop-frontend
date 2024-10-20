@@ -15,6 +15,7 @@ export type Product = {
   image_id: string;
   image_url: string;
   category_id: string;
+  author_id: string;
   images: ProductImages[];
 };
 

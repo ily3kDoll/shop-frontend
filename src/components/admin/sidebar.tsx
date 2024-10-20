@@ -3,6 +3,8 @@ import { MdManageAccounts } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { TbCategoryFilled } from "react-icons/tb";
 import { FaBook } from "react-icons/fa";
+import { HiUsers } from "react-icons/hi2";
+import { CiBag1 } from "react-icons/ci";
 
 const menuItems = [
   {
@@ -10,7 +12,11 @@ const menuItems = [
     icon: <HomeIcon className="h-5 w-5" />,
     link: "/admin",
   },
-
+  {
+    title: "Authors",
+    icon: <CiBag1 className="h-5 w-5" />,
+    link: "/admin/authors",
+  },
   {
     title: "Products",
     icon: <FaBook className="h-5 w-5" />,
@@ -25,6 +31,16 @@ const menuItems = [
     title: "Users",
     icon: <MdManageAccounts className="h-5 w-5" />,
     link: "/admin/users",
+  },
+  {
+    title: "Customers",
+    icon: <HiUsers className="h-5 w-5" />,
+    link: "/admin/customers",
+  },
+  {
+    title: "Orders",
+    icon: <CiBag1 className="h-5 w-5" />,
+    link: "/admin/orders",
   },
 ];
 

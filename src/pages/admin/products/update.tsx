@@ -19,30 +19,29 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { useGetAllNameCategories } from "@/hooks/query-categories.ts/useGetAllNameCategories";
-import { useAddExtraImage } from "@/hooks/query-products.ts/useAddExtraImage";
-import { useChangeImage } from "@/hooks/query-products.ts/useChangeImage";
-import { useDeleteExtraImages } from "@/hooks/query-products.ts/useDeleteExtraImages";
-import { useFormCreateProduct } from "@/hooks/query-products.ts/useFormCreateProduct";
-import { useGetProduct } from "@/hooks/query-products.ts/useGetProduct";
-import { useUpdateProduct } from "@/hooks/query-products.ts/useUpdateProduct";
-
+import { useGetAllNameAuthors } from "@/hooks/query-authors/useGetAllNameAuthors";
+import { useGetAllNameCategories } from "@/hooks/query-categories/useGetAllNameCategories";
+import { useAddExtraImage } from "@/hooks/query-products/useAddExtraImage";
+import { useChangeImage } from "@/hooks/query-products/useChangeImage";
+import { useDeleteExtraImages } from "@/hooks/query-products/useDeleteExtraImages";
+import { useFormCreateProduct } from "@/hooks/query-products/useFormCreateProduct";
+import { useGetProduct } from "@/hooks/query-products/useGetProduct";
+import { useUpdateProduct } from "@/hooks/query-products/useUpdateProduct";
 import useToastMessage from "@/hooks/useToastMessage";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
 import { z } from "zod";
 
 function UpdateProductPage() {
   const id = useParams().id ?? "";
-  const [activeTab, setActiveTab] = useState("info");
   const { form, formSchema } = useFormCreateProduct();
   const { data: categories } = useGetAllNameCategories();
+  const { data: authors } = useGetAllNameAuthors();
   const [image, setImage] = useState<File>();
   const mutationImage = useChangeImage();
   const { toastLoading } = useToastMessage();
-  const [extraImages, setExtraImages] = useState<File[]>([]);
   const mutationAddExtraImage = useAddExtraImage();
   const mutationDeleteExtraImage = useDeleteExtraImages();
 
@@ -56,6 +55,7 @@ function UpdateProductPage() {
     form.setValue("sale", product?.sale ?? 0);
     form.setValue("stock", product?.stock ?? 0);
     form.setValue("category_id", product?.category_id ?? "");
+    form.setValue("author_id", product?.author_id ?? "");
     form.setValue("description", product?.description ?? "");
   }, [product]);
 
@@ -217,6 +217,30 @@ function UpdateProductPage() {
                     </FormControl>
                     <SelectContent>
                       {categories?.map((item: any) => (
+                        <SelectItem key={item._id} value={item._id}>
+                          {item.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="author_id"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Thuộc tác giả</FormLabel>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Chọn tác giả" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {authors?.map((item: any) => (
                         <SelectItem key={item._id} value={item._id}>
                           {item.name}
                         </SelectItem>

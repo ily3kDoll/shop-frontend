@@ -1,8 +1,8 @@
 import DialogDelete from "@/components/dialog-delete";
 import { columns } from "@/components/manage-products/column";
 import DataTable from "@/components/table/data-table";
-import { useDeleteProduct } from "@/hooks/query-products.ts/useDeleteProduct";
-import { useGetAllProducts } from "@/hooks/query-products.ts/useGetAllProducts";
+import { useDeleteProduct } from "@/hooks/query-products/useDeleteProduct";
+import { useGetAllProducts } from "@/hooks/query-products/useGetAllProducts";
 import useDebounce from "@/hooks/useDebounce";
 import { useProductStore } from "@/store/useProductStore";
 import { useState } from "react";

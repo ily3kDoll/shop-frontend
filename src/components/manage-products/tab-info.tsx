@@ -20,6 +20,7 @@ interface TabInfoProps {
   value: string;
   form: any;
   categories: any;
+  authors: any;
 }
 
 function TabInfo(props: TabInfoProps) {
@@ -120,6 +121,30 @@ function TabInfo(props: TabInfoProps) {
               </FormControl>
               <SelectContent>
                 {props?.categories?.map((item: any) => (
+                  <SelectItem key={item._id} value={item._id}>
+                    {item.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={props.form.control}
+        name="author_id"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Thuộc tác giả</FormLabel>
+            <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <FormControl>
+                <SelectTrigger>
+                  <SelectValue placeholder="Chọn danh mục" />
+                </SelectTrigger>
+              </FormControl>
+              <SelectContent>
+                {props?.authors?.map((item: any) => (
                   <SelectItem key={item._id} value={item._id}>
                     {item.name}
                   </SelectItem>

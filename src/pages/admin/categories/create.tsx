@@ -16,9 +16,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useCreateCategory } from "@/hooks/query-categories.ts/useCreateCategories";
-import { useFormCreateCategory } from "@/hooks/query-categories.ts/useFormCreateCategories";
-import { useGetAllNameCategories } from "@/hooks/query-categories.ts/useGetAllNameCategories";
+import { useCreateCategory } from "@/hooks/query-categories/useCreateCategories";
+import { useFormCreateCategory } from "@/hooks/query-categories/useFormCreateCategories";
+import { useGetAllNameCategories } from "@/hooks/query-categories/useGetAllNameCategories";
 import useToastMessage from "@/hooks/useToastMessage";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";

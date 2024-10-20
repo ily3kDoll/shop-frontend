@@ -16,10 +16,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useFormCreateCategory } from "@/hooks/query-categories.ts/useFormCreateCategories";
-import { useGetAllNameCategories } from "@/hooks/query-categories.ts/useGetAllNameCategories";
-import { useGetCategory } from "@/hooks/query-categories.ts/useGetCategory";
-import { useUpdateCategory } from "@/hooks/query-categories.ts/useUpdateCategory";
+import { useFormCreateCategory } from "@/hooks/query-categories/useFormCreateCategories";
+import { useGetAllNameCategories } from "@/hooks/query-categories/useGetAllNameCategories";
+import { useGetCategory } from "@/hooks/query-categories/useGetCategory";
+import { useUpdateCategory } from "@/hooks/query-categories/useUpdateCategory";
 import useToastMessage from "@/hooks/useToastMessage";
 import { useEffect } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";

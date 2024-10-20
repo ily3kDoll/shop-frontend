@@ -1,7 +1,11 @@
+import { FaCheck } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
+import { Switch } from "../ui/switch";
 import { useProductStore } from "@/store/useProductStore";
 import { Product } from "@/types/product.type";
 import { ColumnDef } from "@tanstack/react-table";
 import Actions from "../table/actions";
+import { useUpdateStatusProduct } from "@/hooks/query-products/useUpdateStatusProduct";
 
 export const columns: ColumnDef<Product>[] = [
   {
@@ -22,9 +26,39 @@ export const columns: ColumnDef<Product>[] = [
     },
   },
   {
+    accessorKey: "author_id",
+    header: "Tác giả",
+    cell: ({ row }) => {
+      const author = row.original.author_id;
+      return <h1>{author?.name}</h1>;
+    },
+  },
+
+  {
+    accessorKey: "stock",
+    header: "Số lượng",
+  },
+
+  {
     accessorKey: "status",
     header: "status",
+    cell: ({ cell, row }) => {
+      const { _id, status } = row.original;
+      const mutation = useUpdateStatusProduct();
+      function handleStatus() {
+        mutation.mutate({ _id, status: !status });
+      }
+      return (
+        <Switch
+          checkedIcon={<FaCheck />}
+          unCheckedIcon={<RxCross2 />}
+          checked={status}
+          onCheckedChange={handleStatus}
+        />
+      );
+    },
   },
+
   {
     accessorKey: "",
     header: "actions",

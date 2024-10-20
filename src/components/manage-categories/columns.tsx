@@ -5,7 +5,7 @@ import { Category } from "@/types/category.type";
 import { ColumnDef } from "@tanstack/react-table";
 import Actions from "../table/actions";
 import { useCategoryStore } from "@/store/useCategoryStore";
-import { useUpdateStatusCategory } from "@/hooks/query-categories.ts/useUpdateStatusCategory";
+import { useUpdateStatusCategory } from "@/hooks/query-categories/useUpdateStatusCategory";
 
 export const columns: ColumnDef<Category>[] = [
   {
