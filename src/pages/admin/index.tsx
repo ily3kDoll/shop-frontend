@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 function LayOutAdminPage() {
   return (
-    <div className="flex">
+    <div className="flex bg-[#daf1ff]">
       <SideBar />
       <div className="container">
         <TopBar />

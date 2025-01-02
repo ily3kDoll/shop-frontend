@@ -51,8 +51,8 @@ function UpdateAuthorPage() {
           onSubmit={form.handleSubmit(handleCreateUser)}
           className="flex flex-col gap-2 items-center"
         >
-          <div className="flex flex-col gap-2 rounded-lg border p-4 ">
-            <h1 className="text-xl self-center">Update Author</h1>
+          <div className="flex flex-col gap-2 bg-white shadow-md rounded-lg item-center p-4">
+            <h1 className="text-xl font-semibold self-center">Update Author</h1>
             <FormField
               control={form.control}
               name="name"
@@ -60,7 +60,7 @@ function UpdateAuthorPage() {
                 <FormItem className="w-72">
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="name" {...field} />
+                    <Input placeholder="Name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -71,11 +71,11 @@ function UpdateAuthorPage() {
               name="date"
               render={({ field }) => (
                 <FormItem className="flex flex-col gap-2">
-                  <FormLabel htmlFor="datetime">Ngày chết</FormLabel>
+                  <FormLabel htmlFor="datetime">Date</FormLabel>
                   <FormControl>
                     <DateTimePicker
                       locale={vi}
-                      placeholder="Chọn ngày chết của tác giả"
+                      placeholder="Date"
                       value={field.value}
                       onChange={field.onChange}
                     />
@@ -84,8 +84,10 @@ function UpdateAuthorPage() {
                 </FormItem>
               )}
             />
+            <Button className="self-center bg-blue-500 hover:bg-blue-600 shadow-md">
+              Lưu
+            </Button>
           </div>
-          <Button className="self-end">Tạo</Button>
         </form>
       </Form>
     </div>

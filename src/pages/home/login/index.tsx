@@ -12,9 +12,10 @@ import { useCustomerLogin } from "@/hooks/query-customers/useCustomersLogin";
 import { useFormLogin } from "@/hooks/useFormLogin";
 import useToastMessage from "@/hooks/useToastMessage";
 import { LocalUtils } from "@/utils/local-utils";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
+import Logo from "@/assets/logo2.png";
 
 const LoginHomePage = () => {
   const { form, formSchema } = useFormLogin();
@@ -35,8 +36,20 @@ const LoginHomePage = () => {
   }
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+    <div className="flex flex-col items-center justify-center h-screen bg-[#daf1ff]">
+      {/* Enlarged header */}
+      <Link to="/" className="flex items-center text-4xl font-bold">
+        <span>Manga</span>
+        <img
+          className="object-cover w-14 h-14 drop-shadow-lg -mx-1"
+          src={Logo}
+          alt="logo"
+        />
+        <span>Store</span>
+      </Link>
+
+      {/* Added spacing */}
+      <div className="mt-5 w-full max-w-md bg-white rounded-lg shadow-md p-8">
         <h2 className="text-2xl font-semibold text-center">Đăng Nhập</h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleLogin)} className="mt-6">
@@ -71,7 +84,7 @@ const LoginHomePage = () => {
             </Button>
           </form>
         </Form>
-        <div className="mt-4 text-center">
+        <div className="mt-6 text-center">
           <div className="flex gap-2 justify-between">
             <Link to="/register" className="text-blue-500 hover:underline">
               Đăng ký

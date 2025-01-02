@@ -14,7 +14,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { TabsContent } from "@/components/ui/tabs";
-import React from "react";
 
 interface TabInfoProps {
   value: string;
@@ -33,7 +32,7 @@ function TabInfo(props: TabInfoProps) {
           <FormItem>
             <FormLabel>Tên sản phẩm</FormLabel>
             <FormControl>
-              <Input {...field} />
+              <Input placeholder="Ten - SoTap - ..." {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>

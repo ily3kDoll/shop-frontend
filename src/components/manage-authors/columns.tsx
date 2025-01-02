@@ -28,7 +28,7 @@ export const columns: ColumnDef<Author>[] = [
 
   {
     accessorKey: "",
-    header: "actions",
+    header: "Actions",
     cell: ({ cell, row }) => {
       const { _id, name } = row.original;
       const { setModalDelete } = useAuthorStore();

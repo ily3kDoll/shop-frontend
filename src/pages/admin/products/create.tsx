@@ -59,7 +59,7 @@ function CreateProductPage() {
     <div className="flex flex-col gap-4 ">
       <h1 className="text-2xl font-bold">Manager Product</h1>{" "}
       <Link to={"/admin/products"}>
-        <Button className="flex gap-2">
+        <Button className="flex gap-2 bg-white text-black hover:bg-gray-200">
           <IoMdArrowRoundBack /> Quay lại
         </Button>
       </Link>
@@ -83,14 +83,14 @@ function CreateProductPage() {
                     "w-full justify-start",
                     activeTab === tab.value
                       ? "!bg-slate-500 !text-white"
-                      : "hover:bg-slate-500"
+                      : "hover:bg-slate-500 hover:text-white"
                   )}
                 >
                   {tab.title}
                 </TabsTrigger>
               ))}
             </TabsList>
-            <div className="w-[1000px]">
+            <div className="w-[950px] bg-white rounded-lg shadow-lg px-4">
               <TabInfo
                 value="info"
                 form={form}
@@ -107,7 +107,9 @@ function CreateProductPage() {
               />
             </div>
           </Tabs>
-          <Button className="self-end">Tạo</Button>
+          <Button className="bg-green-500 hover:bg-green-600 rounded-lg shadow-md self-end">
+            Tạo
+          </Button>
         </form>
       </Form>
     </div>

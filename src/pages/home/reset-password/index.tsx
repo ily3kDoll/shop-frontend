@@ -29,9 +29,9 @@ const ResetPasswordPage = () => {
   }
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="flex items-center justify-center h-screen bg-[#daf1ff]">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-2xl font-semibold text-center">Đăng Nhập</h2>
+        <h2 className="text-2xl font-semibold text-center">Đổi mật khẩu</h2>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(handleResetPassword)}
@@ -42,7 +42,7 @@ const ResetPasswordPage = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Nhập mật khẩu mới</FormLabel>
                   <FormControl className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
                     <Input type="password" {...field} />
                   </FormControl>
@@ -56,7 +56,7 @@ const ResetPasswordPage = () => {
               name="confirm_password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Xác nhận password</FormLabel>
+                  <FormLabel>Xác nhận mật khẩu</FormLabel>
                   <FormControl className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
                     <Input type="password" {...field} />
                   </FormControl>

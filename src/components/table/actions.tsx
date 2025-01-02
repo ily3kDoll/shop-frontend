@@ -1,5 +1,5 @@
-import { TrashIcon } from "@radix-ui/react-icons";
-import { FaPencilAlt } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -32,14 +32,14 @@ function Actions({ link_update, setModalDelete, _id, name }: ActionProps) {
         {link_update && (
           <Link to={link_update}>
             <DropdownMenuItem>
-              <FaPencilAlt className="mr-2 h-4 w-4" />
-              <span>EDIT</span>
+              <FaEdit className="text-blue-500 mr-2 h-4 w-4" />
+              <span className="font-medium">Sửa</span>
             </DropdownMenuItem>
           </Link>
         )}
         <DropdownMenuItem onClick={handleDelete}>
-          <TrashIcon className="mr-2 h-4 w-4" />
-          <span>DELETE</span>
+          <FaRegTrashAlt className="text-red-500 mr-2 h-4 w-4" />
+          <span className="font-medium">Xóa</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

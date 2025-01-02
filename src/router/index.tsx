@@ -30,10 +30,22 @@ import ThanksPage from "@/pages/home/checkout/thanks";
 import ProfilePage from "@/pages/home/profile";
 import LayOutAdminPage from "@/pages/admin";
 import { DashBoardPage } from "@/pages/admin/dashboard";
+import BlogsPage from "@/pages/admin/blogs";
+import CreateBlogPage from "@/pages/admin/blogs/create";
+import BlogHomePage from "@/pages/home/blog";
+import BlogDetailPage from "@/pages/home/blog/detail";
+import UpdateBlogPage from "@/pages/admin/blogs/update";
+import ContactPage from "@/pages/home/contact";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const router = createBrowserRouter([
   {
-    element: <LayoutHomePages />,
+    element: (
+      <>
+        <ScrollToTop />
+        <LayoutHomePages />
+      </>
+    ),
     children: [
       {
         path: "/",
@@ -62,6 +74,18 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "/blogs",
+        element: <BlogHomePage />,
+      },
+      {
+        path: "/blogs/:id",
+        element: <BlogDetailPage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
     ],
   },
@@ -132,6 +156,18 @@ const router = createBrowserRouter([
       {
         path: "/admin/authors/create-author",
         element: <CreateAuthorPage />,
+      },
+      {
+        path: "/admin/blogs",
+        element: <BlogsPage />,
+      },
+      {
+        path: "/admin/blogs/create-blog",
+        element: <CreateBlogPage />,
+      },
+      {
+        path: "/admin/blogs/:id",
+        element: <UpdateBlogPage />,
       },
     ],
   },

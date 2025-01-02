@@ -1,12 +1,17 @@
 import Footer from "@/components/home/footer";
 import Header from "@/components/home/header";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 function LayoutHomePages() {
+  const location = useLocation();
+
+  const isHomePage = location.pathname === "/";
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#daf1ff]">
       <Header />
-      <Outlet />
+      <div className={isHomePage ? "" : "px-40"}>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

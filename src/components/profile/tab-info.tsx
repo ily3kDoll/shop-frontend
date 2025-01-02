@@ -21,7 +21,7 @@ import { useFormCustomer } from "@/hooks/query-customers/useFormCustomer";
 import { useGetMeCustomer } from "@/hooks/query-customers/useGetMeCustomers";
 import { useUpdateCustomer } from "@/hooks/query-customers/useUpdateCustomer";
 import useToastMessage from "@/hooks/useToastMessage";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { z } from "zod";
 
 interface TabInfoProps {
@@ -51,80 +51,85 @@ function TabInfo(props: TabInfoProps) {
       value={props.value}
       className="flex flex-col items-center gap-2 w-full"
     >
-      <h1 className="text-2xl font-bold">Thông tin của bạn</h1>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(handleUpdate)}
-          className="flex flex-col gap-2 w-96"
-        >
-          <Label>Email</Label>
-          <Input value={customer?.email} disabled />
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Tên</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="address"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Địa chỉ</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="phone_number"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Số điện thoại</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="gender"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Giới tính</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+      {/* Phần Thông Tin Người Dùng */}
+      <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-[500px]">
+        <h1 className="text-2xl font-bold mb-4 text-center">
+          Thông tin của bạn
+        </h1>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(handleUpdate)}
+            className="flex flex-col gap-2"
+          >
+            <Label>Email</Label>
+            <Input value={customer?.email} disabled />
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Tên</FormLabel>
                   <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Chọn giới tính của bạn" />
-                    </SelectTrigger>
+                    <Input {...field} />
                   </FormControl>
-                  <SelectContent>
-                    <SelectItem value="male">Nam</SelectItem>
-                    <SelectItem value="female">Nữ</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button className="self-end">Lưu</Button>
-        </form>
-      </Form>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="address"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Địa chỉ</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="phone_number"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Số điện thoại</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="gender"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Giới tính</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Chọn giới tính của bạn" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="male">Nam</SelectItem>
+                      <SelectItem value="female">Nữ</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button className="self-end">Lưu</Button>
+          </form>
+        </Form>
+      </div>
     </TabsContent>
   );
 }

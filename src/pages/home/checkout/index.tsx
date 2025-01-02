@@ -43,8 +43,9 @@ function CheckoutPage() {
           className="flex gap-4"
           onSubmit={form.handleSubmit(handleCheckout)}
         >
-          <div className="w-1/2">
-            <h1 className="text-2xl my-4">Nhập thông tin của bạn</h1>
+          {/* Phần Thông Tin Người Dùng */}
+          <div className="w-1/2 bg-white p-4 rounded-lg shadow-md">
+            <h1 className="text-2xl my-4 font-bold">Nhập thông tin của bạn</h1>
             <FormField
               control={form.control}
               name="address"
@@ -85,15 +86,17 @@ function CheckoutPage() {
               )}
             />
           </div>
-          <div className="flex flex-col w-1/2">
-            <h1 className="text-2xl my-4">Giỏ hàng</h1>
+
+          {/* Phần Giỏ Hàng */}
+          <div className="flex flex-col w-1/2 bg-white p-4 rounded-lg shadow-md">
+            <h1 className="text-2xl my-4 font-bold">Giỏ hàng</h1>
             <ScrollArea className="h-[300px]">
               {cart?.map((item) => (
                 <li
                   key={item._id}
                   className="flex items-center justify-between border-b pb-4"
                 >
-                  <div className="flex items-center">
+                  <div className="flex items-center mt-4">
                     <img
                       src={item.product_id.image_url}
                       alt={item.product_id.image_url}
@@ -113,7 +116,6 @@ function CheckoutPage() {
                       </p>
                       <div className="flex gap-2 items-center">
                         <p className="text-gray-600">Số lượng: </p>
-
                         <span className="mx-2">{item.quantity}</span>
                       </div>
                     </div>
@@ -127,7 +129,7 @@ function CheckoutPage() {
                 <p className="text-gray-600 text-xl">{formatPrice(30000)}</p>
               </div>
               <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Tống tiền:</h2>
+                <h2 className="text-xl font-semibold">Tổng tiền:</h2>
                 <p className="text-gray-600 text-xl">
                   {formatPrice(totalItems(cart ?? []) + 30000)}
                 </p>

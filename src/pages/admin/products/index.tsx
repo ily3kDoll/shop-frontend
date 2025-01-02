@@ -1,5 +1,5 @@
 import DialogDelete from "@/components/dialog-delete";
-import { columns } from "@/components/manage-products/column";
+import { columns } from "@/components/manage-products/columns";
 import DataTable from "@/components/table/data-table";
 import { useDeleteProduct } from "@/hooks/query-products/useDeleteProduct";
 import { useGetAllProducts } from "@/hooks/query-products/useGetAllProducts";

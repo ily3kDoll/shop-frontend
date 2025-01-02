@@ -23,7 +23,7 @@ function CategoryItem({
       <Button
         variant="ghost"
         className={`w-full justify-start ${depth > 0 && "pl-4"} ${
-          categoryId === category._id && "bg-orange-400"
+          categoryId === category._id && "bg-gray-400"
         }`}
         onClick={() => {
           setIsOpen(!isOpen);

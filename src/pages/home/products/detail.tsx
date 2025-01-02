@@ -1,3 +1,5 @@
+import EmblaCarousel from "@/components/embla-carousel";
+import ProductTabs from "@/components/home/producttabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAddCart } from "@/hooks/query-cart/useAddCart";
@@ -17,6 +19,7 @@ function ProductDetailPage() {
       setQuantity(quantity);
     }
   }
+
   useEffect(() => {
     console.log(mutation.error);
   }, [mutation.error]);
@@ -27,58 +30,96 @@ function ProductDetailPage() {
   }
 
   return (
-    <div className="container p-8 flex flex-col gap-2">
-      <div className=" flex">
-        <div className="w-1/2 flex justify-center">
-          <img
-            src={product?.image_url}
-            alt={product?.name}
-            className="w-64 h-64 object-cover"
-          />
+    <div className="container p-8 flex flex-col gap-4">
+      <div className="flex gap-4">
+        <div className="w-1/3 bg-white p-4 rounded-lg shadow-lg flex justify-center">
+          {product && <EmblaCarousel product={product} />}
         </div>
-        <div className="text-lg flex flex-col gap-2">
-          <h1 className="text-3xl font-bold mb-2 ">{product?.name}</h1>
-          <h1>Số lượng: {product?.stock}</h1>
-          <div className="flex gap-2 ">
-            Giá tiền:
-            <h1 className="line-through">{formatPrice(product?.price ?? 0)}</h1>
+        <div className="w-2/3 flex flex-col gap-2">
+          <div className="bg-white p-4 rounded-lg shadow-sm flex flex-col gap-2 h-full">
+            <h1 className="text-2xl font-bold mb-2">{product?.name}</h1>
+            <h1 className="font-medium text-lg">Số lượng: {product?.stock}</h1>
+            {product?.sale && product?.sale > 0 ? (
+              <>
+                <div className="flex items-center">
+                  <h1 className="font-medium text-lg mr-2">Giá:</h1>
+                  <h1 className="text-md text-red-500 font-bold">
+                    {formatPrice(
+                      calSale(product?.price ?? 0, product?.sale ?? 0)
+                    )}
+                  </h1>
+                  <span className="ml-2 text-xs text-white bg-red-500 px-2 py-1 rounded-full font-bold">
+                    -{product.sale}%
+                  </span>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <h1 className="ml-10 text-sm text-gray-400 line-through">
+                    {formatPrice(product?.price ?? 0)}
+                  </h1>
+                </div>
+              </>
+            ) : (
+              <div className="flex items-center gap-2">
+                <h1 className="font-medium text-lg">Giá:</h1>
+                <span className="text-md text-red-500 font-bold">
+                  {formatPrice(product?.price ?? 0)}
+                </span>
+              </div>
+            )}
           </div>
-          <h1 className="">
-            Giá giảm:{" "}
-            {formatPrice(calSale(product?.price ?? 0, product?.sale ?? 0))}
-          </h1>
 
-          <div className="mt-auto flex flex-col gap-2">
+          <div className="bg-white p-4 rounded-lg shadow-md flex flex-col gap-2">
             <div className="flex items-center mt-2 gap-2">
-              <Button
-                onClick={() => handleQuantity(quantity - 1)}
-                size={"icon"}
-              >
-                -
-              </Button>
-              <Input
-                className="w-10"
-                onChange={(e) => setQuantity(+e.target.value)}
-                value={quantity}
-              />
-              <Button
-                onClick={() => handleQuantity(quantity + 1)}
-                size={"icon"}
-              >
-                +
-              </Button>
+              <h1 className="font-bold text-xl">Số lượng:</h1>
+              <div className="flex items-center">
+                <Button
+                  onClick={() => handleQuantity(quantity - 1)}
+                  size={"icon"}
+                  className="border border-gray-300 rounded-l-md bg-gray-100 text-black hover:bg-gray-200"
+                  disabled={product?.stock === 0}
+                >
+                  -
+                </Button>
+                <Input
+                  className="w-10 border-0 mx-1 text-center"
+                  onChange={(e) => setQuantity(+e.target.value)}
+                  value={quantity}
+                  disabled={product?.stock === 0}
+                />
+                <Button
+                  onClick={() => handleQuantity(quantity + 1)}
+                  size={"icon"}
+                  className="border border-gray-300 rounded-r-md bg-gray-100 text-black hover:bg-gray-200"
+                  disabled={product?.stock === 0}
+                >
+                  +
+                </Button>
+              </div>
             </div>
 
-            <Button onClick={handleAddCart} size={"sm"}>
-              Thêm vào giỏ hàng
+            <Button
+              className={`w-full mt-2 py-1 text-sm font-bold rounded transition ${
+                product?.stock === 0
+                  ? "bg-gray-400 text-white cursor-not-allowed"
+                  : "bg-white border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
+              }`}
+              onClick={handleAddCart}
+              size={"default"}
+              disabled={product?.stock === 0}
+            >
+              {product?.stock === 0 ? "Hết hàng" : "Thêm vào giỏ hàng"}
             </Button>
           </div>
         </div>
       </div>
 
-      <div className="ml-10">
+      <div className="bg-white p-4 rounded-lg shadow-lg">
+        <h1 className="text-2xl font-bold mb-2">Mô tả sản phẩm</h1>
+        <h1 className="text-1xl font-bold mb-2">{product?.name}</h1>
         <h1>{product?.description}</h1>
       </div>
+
+      <ProductTabs />
     </div>
   );
 }

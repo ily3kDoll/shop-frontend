@@ -89,16 +89,16 @@ function UpdateProductPage() {
     <div className="flex flex-col gap-4 ">
       <h1 className="text-2xl font-bold">Manager Product</h1>{" "}
       <Link to={"/admin/products"}>
-        <Button className="flex gap-2">
+        <Button className="flex gap-2 bg-white text-black hover:bg-gray-200">
           <IoMdArrowRoundBack /> Quay lại
         </Button>
       </Link>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleCreate)}
-          className="flex  gap-2 "
+          className="flex gap-2 bg-white rounded-lg shadow-md border p-4"
         >
-          <div className="w-1/2">
+          <div className="w-2/3">
             <FormField
               control={form.control}
               name="name"
@@ -203,54 +203,56 @@ function UpdateProductPage() {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="category_id"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Danh Mục</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Chọn danh mục" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {categories?.map((item: any) => (
-                        <SelectItem key={item._id} value={item._id}>
-                          {item.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="author_id"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Thuộc tác giả</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Chọn tác giả" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {authors?.map((item: any) => (
-                        <SelectItem key={item._id} value={item._id}>
-                          {item.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div className="flex gap-2">
+              <FormField
+                control={form.control}
+                name="category_id"
+                render={({ field }) => (
+                  <FormItem className="w-1/2">
+                    <FormLabel>Danh Mục</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Chọn danh mục" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {categories?.map((item: any) => (
+                          <SelectItem key={item._id} value={item._id}>
+                            {item.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="author_id"
+                render={({ field }) => (
+                  <FormItem className="w-1/2">
+                    <FormLabel>Thuộc tác giả</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Chọn tác giả" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {authors?.map((item: any) => (
+                          <SelectItem key={item._id} value={item._id}>
+                            {item.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
             <FormField
               control={form.control}
               name="description"
@@ -261,20 +263,16 @@ function UpdateProductPage() {
                     <Textarea
                       placeholder="Mô tả về sản phẩm..."
                       className="resize-none"
-                      rows={7}
+                      rows={6}
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription>
-                    You can <span>@mention</span> other users and organizations.
-                  </FormDescription>
-                  <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-          <div className="w-1/2 flex flex-col gap-4">
-            <div className="flex gap-4">
+          <div className="w-1/3 flex flex-col gap-4">
+            <div className="items-center flex gap-4">
               <Input
                 onChange={handleChangeImage}
                 id="hiddenFileInput"
@@ -304,7 +302,7 @@ function UpdateProductPage() {
                 type="file"
                 multiple
               />
-              <ScrollArea className="h-[300px] w-full border overflow-y-auto">
+              <ScrollArea className="h-[245px] w-full border overflow-y-auto">
                 <div className="flex flex-wrap items-center justify-start gap-2 p-2">
                   {product?.images?.map((image) => (
                     <ImageDeleteIcon
@@ -317,7 +315,9 @@ function UpdateProductPage() {
                 </div>
               </ScrollArea>
             </div>
-            <Button className="self-end">Lưu</Button>
+            <Button className="bg-blue-500 hover:bg-blue-600 rounded-lg shadow-md self-end">
+              Lưu
+            </Button>
           </div>
         </form>
       </Form>

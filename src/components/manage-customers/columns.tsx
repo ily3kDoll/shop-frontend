@@ -20,11 +20,11 @@ export const columns: ColumnDef<Customer>[] = [
   },
   {
     accessorKey: "phone_number",
-    header: "phone number",
+    header: "Phone number",
   },
   {
     accessorKey: "image_url",
-    header: "ảnh chính",
+    header: "Main image",
     cell: ({ row }) => {
       const { image_url } = row.original;
 
@@ -33,7 +33,7 @@ export const columns: ColumnDef<Customer>[] = [
   },
   {
     accessorKey: "status",
-    header: "status",
+    header: "Status",
     cell: ({ cell, row }) => {
       const { _id, status } = row.original;
       const mutation = useUpdateStatusCustomer();

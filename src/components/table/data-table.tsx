@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDownIcon } from "lucide-react";
 import { Link } from "react-router-dom";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -68,20 +69,26 @@ function DataTable<TData, TValue>({
             onChange={(e) => setKeyword(e.target.value)}
             value={keyword}
             placeholder="tìm kiếm..."
-            className="max-w-sm"
+            className="max-w-sm bg-white rounded-md shadow-md"
           />
         </div>
 
         <div className="flex gap-2">
           {link_create && (
             <Link to={link_create}>
-              <Button>Create</Button>
+              <Button className="bg-green-500 hover:bg-green-600 rounded-md shadow-md">
+                Tạo
+              </Button>
             </Link>
           )}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="ml-auto">
-                Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
+              <Button
+                variant="outline"
+                className="ml-auto rounded-md shadow-md"
+              >
+                Hiển thị
+                <ChevronDownIcon className="ml-2 h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -106,7 +113,7 @@ function DataTable<TData, TValue>({
           </DropdownMenu>
         </div>
       </div>
-      <div className="rounded-md border">
+      <div className="bg-white rounded-md border shadow-md">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -149,7 +156,7 @@ function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Không có kết quả.
                 </TableCell>
               </TableRow>
             )}
@@ -164,7 +171,7 @@ function DataTable<TData, TValue>({
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            Trước
+            <FaChevronLeft />
           </Button>
           <span>
             <strong>
@@ -178,7 +185,7 @@ function DataTable<TData, TValue>({
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            Sau
+            <FaChevronRight />
           </Button>
         </div>
       </div>

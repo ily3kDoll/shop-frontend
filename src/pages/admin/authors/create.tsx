@@ -31,7 +31,7 @@ function CreateAuthorPage() {
     <div className="flex flex-col gap-4 ">
       <h1 className="text-2xl font-bold">Manager Author</h1>{" "}
       <Link to={"/admin/authors"}>
-        <Button className="flex gap-2">
+        <Button className="flex gap-2 bg-white text-black hover:bg-gray-200">
           <IoMdArrowRoundBack /> Quay lại
         </Button>
       </Link>
@@ -40,8 +40,8 @@ function CreateAuthorPage() {
           onSubmit={form.handleSubmit(handleCreateUser)}
           className="flex flex-col gap-2 items-center"
         >
-          <div className="flex flex-col gap-2 rounded-lg border p-4 ">
-            <h1 className="text-xl self-center">Create Author</h1>
+          <div className="flex flex-col gap-2 bg-white shadow-md rounded-lg item-center p-4">
+            <h1 className="text-xl font-semibold self-center">Create Author</h1>
             <FormField
               control={form.control}
               name="name"
@@ -49,7 +49,7 @@ function CreateAuthorPage() {
                 <FormItem className="w-72">
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="name" {...field} />
+                    <Input placeholder="Name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -59,12 +59,12 @@ function CreateAuthorPage() {
               control={form.control}
               name="date"
               render={({ field }) => (
-                <FormItem className="flex flex-col gap-2">
-                  <FormLabel htmlFor="datetime">Ngày chết</FormLabel>
+                <FormItem className="w-72">
+                  <FormLabel htmlFor="datetime">Date</FormLabel>
                   <FormControl>
                     <DateTimePicker
                       locale={vi}
-                      placeholder="Chọn ngày chết của tác giả"
+                      placeholder="Date"
                       value={field.value}
                       onChange={field.onChange}
                     />
@@ -73,8 +73,10 @@ function CreateAuthorPage() {
                 </FormItem>
               )}
             />
+            <Button className="self-center bg-green-500 hover:bg-green-600 shadow-md">
+              Tạo
+            </Button>
           </div>
-          <Button className="self-end">Tạo</Button>
         </form>
       </Form>
     </div>

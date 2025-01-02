@@ -24,7 +24,7 @@ function TabImages(props: TabImageProps) {
 
   return (
     <TabsContent value={props.value} className="flex gap-4">
-      <div className="flex flex-col gap-4 w-full">
+      <div className="flex flex-col gap-2 w-full">
         {/* Phần ảnh chính */}
         <div className="flex items-center gap-4 w-full">
           <div className="w-1/5 flex flex-col">
@@ -76,7 +76,7 @@ function TabImages(props: TabImageProps) {
             />
           </div>
 
-          <ScrollArea className="h-[265px] w-4/5 border border-gray-300 rounded-md p-2">
+          <ScrollArea className="h-[255px] w-4/5 border border-gray-300 rounded-md p-2 mb-1">
             {props.extraImage && props.extraImage.length > 0 ? (
               <div className="flex flex-wrap gap-4">
                 {props.extraImage.map((image) => (

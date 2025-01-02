@@ -25,29 +25,28 @@ function TopBar() {
   };
 
   return (
-    <div className="flex items-center justify-between bg-slate-400">
-      <h1 className="text-3xl font-bold">Admin</h1>
+    <div className="flex justify-end">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative h-8 w-8 rounded-full">
             <Avatar className="h-8 w-8">
-              <AvatarFallback>JD</AvatarFallback>
+              <AvatarFallback>ADM</AvatarFallback>
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" align="end" forceMount>
           <DropdownMenuLabel className="font-normal">
             <div className="flex flex-col space-y-1">
-              <p className="text-sm font-medium leading-none">John Doe</p>
+              <p className="text-sm font-medium leading-none">Admin</p>
               <p className="text-xs leading-none text-muted-foreground">
-                john.doe@example.com
+                admin@gmail.com
               </p>
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleLogout}>
             <IoLogOutOutline className="mr-2 h-4 w-4" />
-            <span>Log out</span>
+            <span>Đăng xuất</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

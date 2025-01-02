@@ -6,6 +6,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import Actions from "../table/actions";
 import { useCategoryStore } from "@/store/useCategoryStore";
 import { useUpdateStatusCategory } from "@/hooks/query-categories/useUpdateStatusCategory";
+import { FaFolder, FaFolderOpen } from "react-icons/fa"; // Folder icons for categories
 
 export const columns: ColumnDef<Category>[] = [
   {
@@ -15,27 +16,33 @@ export const columns: ColumnDef<Category>[] = [
   {
     accessorKey: "name",
     header: "Name",
-    cell: ({ row, getValue }) => (
-      <div>
-        {row.getCanExpand() ? (
-          <button
-            {...{
-              onClick: row.getToggleExpandedHandler(),
-              style: { cursor: "pointer" },
-            }}
-          >
-            {row.getIsExpanded() ? "👇" : "👉"}
-          </button>
-        ) : (
-          "🔵"
-        )}{" "}
-        {getValue<boolean>()}
-      </div>
-    ),
+    cell: ({ row, getValue }) => {
+      const depth = row.depth; // Get the depth level of the category
+      const isSubcategory = depth > 0; // Check if it's a subcategory
+      const indentLevel = depth * 20; // Increase indentation per level (20px for each level)
+
+      return (
+        <div style={{ paddingLeft: `${indentLevel}px` }}>
+          {row.getCanExpand() ? (
+            <button
+              {...{
+                onClick: row.getToggleExpandedHandler(),
+                style: { cursor: "pointer" },
+              }}
+            >
+              {row.getIsExpanded() ? "🠋" : "➜"}
+            </button>
+          ) : (
+            "-"
+          )}{" "}
+          {getValue<boolean>()}
+        </div>
+      );
+    },
   },
   {
     accessorKey: "status",
-    header: "status",
+    header: "Status",
     cell: ({ cell, row }) => {
       const { _id, status } = row.original;
       const mutation = useUpdateStatusCategory();
@@ -52,10 +59,9 @@ export const columns: ColumnDef<Category>[] = [
       );
     },
   },
-
   {
     accessorKey: "",
-    header: "actions",
+    header: "Actions",
     cell: ({ cell, row }) => {
       const { _id, name } = row.original;
       const { setModalDelete } = useCategoryStore();

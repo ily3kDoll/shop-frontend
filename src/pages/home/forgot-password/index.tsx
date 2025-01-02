@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForgotPassword } from "@/hooks/query-customers/useForgotPassword";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
@@ -13,14 +14,17 @@ const ForgotPasswordPage = () => {
   }
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="flex items-center justify-center h-screen bg-[#daf1ff]">
       <div className="flex gap-2 flex-col w-full max-w-md bg-white rounded-lg shadow-md p-8">
         <h2 className="text-2xl font-semibold text-center">Quên mật khẩu</h2>
+        <label htmlFor="email" className="font-medium">
+          Email
+        </label>
         <Input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Nhập email"
+          placeholder="Nhập Email"
         />
         <Button
           onClick={handleForgotPassword}
@@ -28,6 +32,9 @@ const ForgotPasswordPage = () => {
         >
           Gửi
         </Button>
+        <Link to="/login" className=" text-blue-500 hover:underline my-2">
+          Trở lại đăng nhập
+        </Link>
       </div>
     </div>
   );

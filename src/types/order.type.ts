@@ -12,6 +12,7 @@ export type Order = {
   shipping_cost: number;
   order_detail: OrderDetail[];
   created_at: Date;
+  status: OrderStatus;
 };
 
 export type OrderDetail = {
@@ -22,3 +23,10 @@ export type OrderDetail = {
   product_cost: number;
   total: number;
 };
+
+export enum OrderStatus {
+  PENDING = "PENDING",
+  DELIVERING = "DELIVERING",
+  DELIVERED = "DELIVERED",
+  CANCELLED = "CANCELLED",
+}

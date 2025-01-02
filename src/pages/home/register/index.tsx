@@ -17,7 +17,6 @@ import {
 import { useFormRegister } from "@/hooks/query-customers/useFormRegister";
 import { useRegisterCustomer } from "@/hooks/query-customers/useRegisterCustomers";
 import useToastMessage from "@/hooks/useToastMessage";
-import React from "react";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 
@@ -33,7 +32,7 @@ function RegisterPage() {
   }
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="flex items-center justify-center h-screen bg-[#daf1ff]">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
         <h2 className="text-2xl font-semibold text-center">Đăng Ký</h2>
         <Form {...form}>
@@ -45,7 +44,7 @@ function RegisterPage() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="Email" />
+                    <Input {...field} placeholder="Nhập Email" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -58,7 +57,7 @@ function RegisterPage() {
                 <FormItem>
                   <FormLabel>Mật khẩu</FormLabel>
                   <FormControl>
-                    <Input {...field} type="password" placeholder="mật khẩu" />
+                    <Input {...field} type="password" placeholder="Mật khẩu" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -71,7 +70,11 @@ function RegisterPage() {
                 <FormItem>
                   <FormLabel>Xác nhận mật khẩu</FormLabel>
                   <FormControl>
-                    <Input {...field} type="password" placeholder="mật khẩu" />
+                    <Input
+                      {...field}
+                      type="password"
+                      placeholder="Nhập lại mật khẩu"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -85,7 +88,7 @@ function RegisterPage() {
                   <FormItem>
                     <FormLabel>Tên</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="name" />
+                      <Input {...field} placeholder="Nhâp họ tên" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -112,7 +115,7 @@ function RegisterPage() {
                 <FormItem>
                   <FormLabel>Địa chỉ</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="stress" />
+                    <Input {...field} placeholder="Nhập địa chỉ" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -142,10 +145,6 @@ function RegisterPage() {
                 </FormItem>
               )}
             />
-            <Link to="/login" className=" text-blue-500 hover:underline my-2">
-              Trở lại đăng nhập
-            </Link>
-
             <button
               type="submit"
               className="w-full mt-6 bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500"
@@ -153,6 +152,10 @@ function RegisterPage() {
               Đăng Ký
             </button>
           </form>
+          <Link to="/login" className=" text-blue-500 hover:underline my-2">
+            <br />
+            Trở lại đăng nhập
+          </Link>
         </Form>
       </div>
     </div>

@@ -39,7 +39,7 @@ function CreateCategoryPage() {
     <div className="flex flex-col gap-4 ">
       <h1 className="text-2xl font-bold">Manager Category</h1>{" "}
       <Link to={"/admin/categories"}>
-        <Button className="flex gap-2">
+        <Button className="flex gap-2 bg-white text-black hover:bg-gray-200">
           <IoMdArrowRoundBack /> Quay lại
         </Button>
       </Link>
@@ -48,8 +48,10 @@ function CreateCategoryPage() {
           onSubmit={form.handleSubmit(handleCreateUser)}
           className="flex flex-col gap-2 items-center"
         >
-          <div className="flex flex-col gap-2 rounded-lg border p-4 ">
-            <h1 className="text-xl self-center">Create Category</h1>
+          <div className="flex flex-col gap-2 bg-white rounded-lg shadow-md border p-4 ">
+            <h1 className="text-xl font-semibold self-center">
+              Create Category
+            </h1>
             <FormField
               control={form.control}
               name="name"
@@ -106,8 +108,10 @@ function CreateCategoryPage() {
                 </FormItem>
               )}
             />
+            <Button className="self-center bg-green-500 hover:bg-green-600 shadow-md">
+              Tạo
+            </Button>
           </div>
-          <Button className="self-end">Tạo</Button>
         </form>
       </Form>
     </div>

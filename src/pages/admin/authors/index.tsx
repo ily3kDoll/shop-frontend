@@ -3,11 +3,9 @@ import { columns } from "@/components/manage-authors/columns";
 import DataTable from "@/components/table/data-table";
 import { useDeleteAuthor } from "@/hooks/query-authors/useDeleteAuthor";
 import { useGetAllAuthors } from "@/hooks/query-authors/useGetAllAuthors";
-import { useGetAllCustomers } from "@/hooks/query-customers/useGetAllCustomers";
-
 import useDebounce from "@/hooks/useDebounce";
 import { useAuthorStore } from "@/store/useAuthorStore";
-import React, { useState } from "react";
+import { useState } from "react";
 
 function AuthorsPage() {
   const [keyword, setKeyword] = useState("");

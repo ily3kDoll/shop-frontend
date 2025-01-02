@@ -21,11 +21,11 @@ export const columns: ColumnDef<User>[] = [
   },
   {
     accessorKey: "name",
-    header: "name",
+    header: "Name",
   },
   {
     accessorKey: "status",
-    header: "status",
+    header: "Status",
     cell: ({ cell, row }) => {
       const { _id, status } = row.original;
       const mutation = useUpdateStatusUser();
@@ -44,7 +44,7 @@ export const columns: ColumnDef<User>[] = [
   },
   {
     accessorKey: "role",
-    header: "role",
+    header: "Role",
     cell: ({ cell, row }) => {
       const { role } = row.original;
       return (
@@ -60,7 +60,7 @@ export const columns: ColumnDef<User>[] = [
   },
   {
     accessorKey: "",
-    header: "actions",
+    header: "Actions",
     cell: ({ cell, row }) => {
       const { _id, role, email } = row.original;
       const { setModalDelete } = useUserStore();

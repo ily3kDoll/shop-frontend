@@ -32,8 +32,11 @@ function DialogDelete({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
-            Bạn có chắc chắn muốn xoá:
-            <br /> {name}
+            <h1 className="mb-4">
+              Xác nhận xoá:
+              <br />
+            </h1>
+            <div className="mb-4 font-semibold">{name}</div>
           </DialogTitle>
           <DialogFooter>
             <Button
@@ -44,7 +47,11 @@ function DialogDelete({
             >
               Xoá
             </Button>
-            <Button onClick={() => setModalDelete(false)} size={"sm"}>
+            <Button
+              onClick={() => setModalDelete(false)}
+              size={"sm"}
+              variant={"outline"}
+            >
               Huỷ
             </Button>
           </DialogFooter>

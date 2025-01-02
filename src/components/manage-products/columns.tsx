@@ -18,7 +18,7 @@ export const columns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: "image_url",
-    header: "ảnh chính",
+    header: "Main image",
     cell: ({ row }) => {
       const { image_url } = row.original;
 
@@ -27,21 +27,20 @@ export const columns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: "author_id",
-    header: "Tác giả",
+    header: "Author",
     cell: ({ row }) => {
       const author = row.original.author_id;
       return <h1>{author?.name}</h1>;
     },
   },
-
   {
     accessorKey: "stock",
-    header: "Số lượng",
+    header: "Stock",
   },
 
   {
     accessorKey: "status",
-    header: "status",
+    header: "Status",
     cell: ({ cell, row }) => {
       const { _id, status } = row.original;
       const mutation = useUpdateStatusProduct();
@@ -61,7 +60,7 @@ export const columns: ColumnDef<Product>[] = [
 
   {
     accessorKey: "",
-    header: "actions",
+    header: "Actions",
     cell: ({ cell, row }) => {
       const { _id, name } = row.original;
       const { setModalDelete } = useProductStore();
